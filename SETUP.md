@@ -225,7 +225,7 @@ jobs:
         run: npm run test -- --watch=false --no-progress --browsers=ChromeHeadless
 
       - name: Build Project
-        run: npm run build -- --prod
+        run: npm run build
 ```
 
 ### Automatisiertes ng update
