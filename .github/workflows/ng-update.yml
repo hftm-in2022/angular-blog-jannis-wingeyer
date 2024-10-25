@@ -19,7 +19,7 @@ jobs:
         continue-on-error: true
         run: npx ng update
       - name: Commit and Push Changes
-        if: steps.update.outcome == 'success'
+        continue-on-error: true
         run: |
           git config user.name 'GitHub Actions'
           git config user.email 'actions@github.com'
