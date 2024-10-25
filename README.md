@@ -21,7 +21,7 @@ An Angular application serving as the frontend for the Quarkus Blog API. This pr
 
 ## Demo
 
-[Live Demo auf Azure](https://hftm-blog-api.internal.icybush-570f5437.eastus.azurecontainerapps.io/)
+[Live Demo auf Azure](https://blue-sky-08bce7c0f.5.azurestaticapps.net/)
 
 ## Features
 
