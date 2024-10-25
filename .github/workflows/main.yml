@@ -1,0 +1,32 @@
+name: Dependency Update
+
+on:
+  push:
+    branches:
+      - "*"
+      
+jobs:
+  ng-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Update Angular Dependencies
+        run: npx ng update --all --force
+
+      - name: Commit and Push Changes
+        run: |
+          git config user.name 'GitHub Actions'
+          git config user.email 'actions@github.com'
+          git add .
+          git commit -m 'chore: update dependencies'
+          git push
