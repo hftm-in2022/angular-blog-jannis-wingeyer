@@ -255,7 +255,7 @@ jobs:
         run: npm install
 
       - name: Update Angular Dependencies
-        run: npx ng update --all --force
+        run: npx ng update
 
       - name: Commit and Push Changes
         run: |
