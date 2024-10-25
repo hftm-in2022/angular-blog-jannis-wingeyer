@@ -210,10 +210,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Use Node.js 16.x
+      - name: Use Node.js 18.x
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - name: Install Dependencies
         run: npm install
@@ -225,7 +225,7 @@ jobs:
         run: npm run test -- --watch=false --no-progress --browsers=ChromeHeadless
 
       - name: Build Project
-        run: npm run build -- --prod
+        run: npm run build
 ```
 
 ### Automatisiertes ng update
@@ -246,16 +246,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Use Node.js 16.x
+      - name: Use Node.js 18.x
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
 
       - name: Install Dependencies
         run: npm install
 
       - name: Update Angular Dependencies
-        run: npx ng update --all --force
+        run: npx ng update
 
       - name: Commit and Push Changes
         run: |
