@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 const ValidationSchema = BlogApiResponseSchema(BlogEntrySchema);
 
 @Component({
-  selector: 'blog-overview',
+  selector: 'app-blog-overview',
   templateUrl: './blog-overview.component.html',
   styleUrls: ['./blog-overview.component.scss'],
   standalone: true,
