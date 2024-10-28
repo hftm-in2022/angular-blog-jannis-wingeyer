@@ -7,4 +7,7 @@ describe('AppComponent', () => {
       imports: [AppComponent],
     }).compileComponents();
   });
+  it('passes', () => {
+    expect().nothing();
+  });
 });

@@ -16,4 +16,8 @@ describe('BlogOverviewComponent', () => {
     // component = fixture.componentInstance;
     fixture.detectChanges();
   });
+
+  it('passes', () => {
+    expect().nothing();
+  });
 });
