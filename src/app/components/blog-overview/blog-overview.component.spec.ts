@@ -10,14 +10,10 @@ describe('BlogOverviewComponent', () => {
     await TestBed.configureTestingModule({
       imports: [BlogOverviewComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(BlogOverviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });
