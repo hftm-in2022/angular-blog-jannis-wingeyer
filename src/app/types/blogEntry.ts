@@ -8,8 +8,7 @@ export const BlogEntrySchema = z.object({
   likes: z.number(),
   comments: z.number(),
   createdAt: z.string(),
-  headerImageUrl: z.string(),
+  headerImageUrl: z.string().optional(),
 });
 
 export type BlogEntry = z.infer<typeof BlogEntrySchema>;
-
