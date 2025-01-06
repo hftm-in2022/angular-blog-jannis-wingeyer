@@ -8,7 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
 import { hasRole } from '../../auth/auth-utils';
 
@@ -42,7 +42,7 @@ export class SidebarComponent implements OnInit {
         const { isAuthenticated, userData, accessToken } = loginResponse;
 
         if (isAuthenticated) {
-          let username = userData?.preferred_username;
+          const username = userData?.preferred_username;
 
           this.username.set(username ?? "unknown");
           this.isUserRole.set(hasRole(accessToken, "user"));

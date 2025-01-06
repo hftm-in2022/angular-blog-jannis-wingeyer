@@ -59,8 +59,8 @@ export type NewComment = z.infer<typeof NewCommentSchema>;
 
 // NewEntry schema
 export const NewEntrySchema = z.object({
-  title: z.string().optional(),
-  content: z.string().optional(),
+  title: z.string().min(3),
+  content: z.string().min(3),
   headerImageUrl: z.string().optional(),
 });
 export type NewEntry = z.infer<typeof NewEntrySchema>;

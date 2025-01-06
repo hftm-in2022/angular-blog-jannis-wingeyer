@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { inject, Injectable, signal } from "@angular/core";
 import { finalize, map, Observable } from "rxjs";
 import { BLOG_SERVICE_BASE_URL } from "../constants";
-import { Entry, EntryOverview, EntryOverviewSchema, EntrySchema, PagedData, PagedDataSchema } from "../../types";
+import { Entry, EntryOverview, EntryOverviewSchema, EntrySchema, NewEntry, PagedData, PagedDataSchema } from "../../types";
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +26,14 @@ export class BlogService {
     return this.httpClient
       .get<Entry>(`${BLOG_SERVICE_BASE_URL}/entries/${id}`)
       .pipe(map((data) => EntrySchema.parse(data)))
+      .pipe(finalize(() => this.setLoading(false)));
+  }
+
+  addBlog(entry: NewEntry): Observable<object> {
+    console.log("add");
+    this.setLoading(true);
+
+    return this.httpClient.post(`${BLOG_SERVICE_BASE_URL}/entries`, entry)
       .pipe(finalize(() => this.setLoading(false)));
   }
 

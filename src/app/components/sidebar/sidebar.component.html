@@ -2,12 +2,15 @@
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="false" [autoFocus]="false">
     <mat-toolbar>
-      <h1 [routerLink]="['/']">Blog App {{ username() ? '- ' + username() : '' }}</h1>
+      <h1 [routerLink]="['/']">Blog App</h1>
     </mat-toolbar>
     <mat-nav-list>
-      @if (!(oidcSecurityService.isAuthenticated() | async)) {
-      <a mat-list-item (click)="login()" (keyup)="login()">Login</a>
+      @if ((oidcSecurityService.isAuthenticated() | async) === false) {
+      <a mat-list-item href="#" (click)="login()">Login</a>
       } @else {
+      <div class="username">
+        <p>{{ username() }}</p>
+      </div>
       @if(isUserRole()) {
       <a mat-list-item href="#" [routerLink]="['/add']">Add Blog</a>
       }
@@ -25,7 +28,7 @@
       } @else {
       <h1 [routerLink]="['/']">Blog App {{ username() ? '- ' + username() : '' }}</h1>
 
-      @if (!(oidcSecurityService.isAuthenticated() | async)) {
+      @if ((oidcSecurityService.isAuthenticated() | async) === false) {
       <button mat-raised-button (click)="login()">Login</button>
       } @else {
       <button mat-button (click)="logout()">Logout</button>
