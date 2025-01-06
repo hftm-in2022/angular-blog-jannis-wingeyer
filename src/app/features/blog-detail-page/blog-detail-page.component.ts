@@ -23,5 +23,7 @@ export class BlogDetailPageComponent {
   id = input.required<number>();
   blog = input.required<Entry>();
 
-  public toggleLike() { }
+  public toggleLike() {
+    console.log("like toggled");
+  }
 }
