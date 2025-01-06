@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { BlogOverviewComponent } from './components/blog-overview/blog-overview.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BlogService } from './core/services/blog.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, BlogOverviewComponent],
+  imports: [RouterOutlet, MatProgressSpinnerModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'hftm-angular-blog';
+  blogService = inject(BlogService);
 }
