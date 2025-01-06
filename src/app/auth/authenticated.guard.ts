@@ -2,6 +2,7 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { map, of, switchMap } from 'rxjs';
+import { hasRole } from './auth-utils';
 
 export const isAuthenticatedGuard: CanActivateFn = () => {
   const oidcSecurityService = inject(OidcSecurityService);
@@ -34,8 +35,3 @@ export const isAuthenticatedGuard: CanActivateFn = () => {
   );
 };
 
-function hasRole(accessToken: string, role: string): boolean {
-  const decodedToken = JSON.parse(atob(accessToken.split('.')[1]));
-  const roles: string[] = decodedToken?.realm_access?.roles || [];
-  return roles.includes(role);
-}

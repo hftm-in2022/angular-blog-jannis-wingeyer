@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
+import { hasRole } from '../../auth/auth-utils';
 
 @Component({
   selector: 'app-sidebar',
@@ -30,6 +31,7 @@ import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
 export class SidebarComponent implements OnInit {
   oidcSecurityService = inject(OidcSecurityService);
   username = signal<string | undefined>(undefined);
+  isUserRole = signal(false);
   private breakpointObserver = inject(BreakpointObserver);
 
 
@@ -37,14 +39,16 @@ export class SidebarComponent implements OnInit {
     this.oidcSecurityService
       .checkAuth()
       .subscribe((loginResponse: LoginResponse) => {
-        const { isAuthenticated, userData } = loginResponse;
+        const { isAuthenticated, userData, accessToken } = loginResponse;
 
         if (isAuthenticated) {
           let username = userData?.preferred_username;
 
           this.username.set(username ?? "unknown");
+          this.isUserRole.set(hasRole(accessToken, "user"));
         } else {
           this.username.set(undefined);
+          this.isUserRole.set(false);
         }
       });
   }

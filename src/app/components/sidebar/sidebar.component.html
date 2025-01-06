@@ -8,7 +8,9 @@
       @if (!(oidcSecurityService.isAuthenticated() | async)) {
       <a mat-list-item (click)="login()" (keyup)="login()">Login</a>
       } @else {
+      @if(isUserRole()) {
       <a mat-list-item href="#" [routerLink]="['/add']">Add Blog</a>
+      }
       <a mat-list-item href="#" (click)="logout()">Logout</a>
       }
     </mat-nav-list>
@@ -27,9 +29,11 @@
       <button mat-raised-button (click)="login()">Login</button>
       } @else {
       <button mat-button (click)="logout()">Logout</button>
+      @if(isUserRole()) {
       <button mat-raised-button [routerLink]="['/add']">
         Add Blog
       </button>
+      }
       }
       }
     </mat-toolbar>
