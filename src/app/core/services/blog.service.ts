@@ -7,7 +7,7 @@ import { Entry, EntryOverview, EntryOverviewSchema, EntrySchema, NewEntry, Paged
 @Injectable({
   providedIn: 'root',
 })
-export class BlogService {
+export class BlogService {  // BackendService und State Management bitte trennen
   private _isLoading = signal(false);
   httpClient = inject(HttpClient);
 

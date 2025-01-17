@@ -28,7 +28,7 @@ export class AddBlogPageComponent {
   private router = inject(Router);
 
   constructor(private fb: FormBuilder, private snackBar: MatSnackBar) {
-    this.newEntryForm = this.fb.group({
+    this.newEntryForm = this.fb.group({ // keine Validatoren vorhanden
       title: [''],
       content: [''],
       headerImageUrl: ['']
@@ -39,9 +39,9 @@ export class AddBlogPageComponent {
     const formValue = this.newEntryForm.value;
 
     try {
-      const validatedData: NewEntry = NewEntrySchema.parse(formValue);
+      const validatedData: NewEntry = NewEntrySchema.parse(formValue);  // Schema im Backendservice validieren. 
 
-      this.blogService.addBlog(validatedData).subscribe({
+      this.blogService.addBlog(validatedData).subscribe({  // kein subscribe benutzen, besser Promise oder rxMethod
         next: () => this.router.navigate(["/"]),
         error: (error) => this.snackBar.open(`An error occured: ${error}`)
       });

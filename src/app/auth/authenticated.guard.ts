@@ -4,7 +4,7 @@ import { OidcSecurityService } from 'angular-auth-oidc-client';
 import { map, of, switchMap } from 'rxjs';
 import { hasRole } from './auth-utils';
 
-export const isAuthenticatedGuard: CanActivateFn = () => {
+export const npm isAuthenticatedGuard: CanActivateFn = () => {
   const oidcSecurityService = inject(OidcSecurityService);
   const router = inject(Router);
 

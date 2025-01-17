@@ -12,5 +12,5 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './error-page.component.html',
   styleUrl: './error-page.component.scss',
 })
-export class ErrorPageComponent {
+export class ErrorPageComponent { // in Core oder Shared
 }
